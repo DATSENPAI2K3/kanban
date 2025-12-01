@@ -1,0 +1,49 @@
+<div class="background"><div class="logo"><img src="image/logo.png" alt="logo"></div>
+    <div class="frame">
+        <img src="image/Frame.png" alt="frame" height="500"  style="position: fixed;">
+        <div class="dangnhap">
+            <div class = "cai">
+            <div class="xinchao">
+                <div><h2 style="padding: 0; margin: 0; text-align: center; font-family: 'Nunito';color: white; font-size: 22px;">Đăng ký</h2></div>
+                <div><p style="padding: 0; margin: 0; text-align: center; font-family: 'Nunito'; font-size: 14px; color: white; font-weight: 400;">
+                    -Khởi tạo hành trình của bạn-</p></div>
+                    </div>
+                    <div class="ten_up">
+                            <div class = "ten_nhap">
+                                <div class="ten_khau">
+                    <div class ="inputmkdn">
+                    <div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Email</b></label><br></div>
+                <input id="email" [(ngModel)]="email" type="text" placeholder="Nhập email của bạn" style=" font-family: 'Nunito';"><br>
+                </div>
+                <div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Tên đăng nhập</b></label><br></div>
+                <input id="username" [(ngModel)]="username" type="text" placeholder="Nhập tên đăng nhập của bạn" style=" font-family: 'Nunito';"><br>
+                </div>
+                <div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Họ & tên</b></label><br></div>
+                <input id="fullname" [(ngModel)]="fullname" type="text" placeholder="Nhập họ tên của bạn" style=" font-family: 'Nunito';"><br>
+                </div>
+                <div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Mật khẩu</b></label><br></div>
+                <input id="password" type="password" [(ngModel)]="password" placeholder="Nhập mật khẩu của bạn" style=" font-family: 'Nunito';"><br>
+                </div>
+                <div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Xác nhận mật khẩu</b></label><br></div>
+                <input id="xacnhan" type="password" placeholder="Nhập lại mật khẩu của bạn" style=" font-family: 'Nunito';"><br>
+                </div>
+            </div>
+                
+            </div>
+                <div style="padding: 0; margin: 0; text-align: center;"><button (click)="signup()" style="font-family: 'Nunito'; font-size: 15px; font-weight: 700;">Đăng ký</button></div>
+                </div>
+                
+                <div class = "signup">
+                    <div><span style="color: white; opacity: 0.5;">Already have an account?</span>
+                        <a routerLink="/login" style="text-decoration: none; color: white; font-weight: 600;">Log in</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "icon"><img src="image/icon.png" width="200px"></div></div>

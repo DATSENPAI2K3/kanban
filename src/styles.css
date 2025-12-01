@@ -1,0 +1,11 @@
+/* body{
+    overflow: hidden;
+    font-family: 'Nunito';
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+} */
+ body{
+    margin: 0;
+ }

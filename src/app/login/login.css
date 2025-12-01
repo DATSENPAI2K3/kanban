@@ -1,0 +1,169 @@
+.background{
+    font-family: 'Nunito';
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: linear-gradient(#2B3BA600 0%, #07146D00 0%, #07146D78 47%), url('../../../public/image/59854b8123dc3771f7e8e5eb3bbc7f4a.png') no-repeat center/cover;
+}
+.background::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to left, #010DB821 13%, #020F6B) no-repeat center/cover;
+}
+.logo{
+    margin-top: 35px;
+    margin-left: 51px;
+    position: absolute;
+}
+.logo img{
+    width: 180px;
+}
+.frame{
+    display: flex;
+    flex : 1;
+    align-items: center;
+    gap: 100px;
+}
+.icon{
+    position: absolute;
+    align-self: flex-end;
+}
+.dangnhap{
+    position: fixed;
+    top: 50%;
+    right: 200px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2.5px solid;
+    border-image-source: radial-gradient(69.43% 69.43% at 49.45% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    width: 305px;
+    height: 425px;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+    border-image-slice: 1;
+}
+.dangnhap a{
+    display: inline;
+}
+.inputbox{
+    width: 20px;
+    height: 20px;
+    accent-color: #007bff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+input{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-image-source: radial-gradient(69.43% 69.43% at 49.45% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    border-image-slice: 1;
+    width: 100%;
+    height: 45px;
+    color: white;
+    border-radius: 10px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+input:focus {
+    border: 1px solid black;
+    outline: none;
+}
+button{
+    width: 100%;
+    height: 45px;
+    color: white;
+    background: #0075FF;
+    border-radius: 10px;
+    border: none;
+}
+.matkhau{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between; /*cho mỗi cái một đầu*/
+    flex: 1;
+}
+.signup{
+    display: flex;
+    justify-content: center;
+}
+.cai{
+    flex-direction: column;
+    display: flex;
+    gap: 23px;
+}
+.xinchao{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.inputmkdn{ 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.inputmkdn > div{
+    padding: 0; 
+    margin: 0;
+}
+.ten_up{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.ten_nhap{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.ten_khau{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+input::placeholder{
+    color: #A0AEC0;
+    line-height: 140%;
+    font-weight: 700;
+}
+button:hover{
+    transform: translateY(-2px);
+}
+@media (max-width: 600px) {
+  .dangnhap {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    
+  }
+}
+@media (max-width: 400px) {
+  .dangnhap {
+    position: fixed;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    
+  }
+}
+@media (max-width: 400px) {
+  .dangnhap {
+    position: absolute;
+    width: 100%;
+    right: 1px;
+    left: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+  }
+}

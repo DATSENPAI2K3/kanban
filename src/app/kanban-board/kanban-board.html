@@ -1,0 +1,162 @@
+<div class="header">
+        <div class="left">
+            <img id="imghome" src="image/home.png" alt="home" height="32px">
+            <div>
+                <span style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #495057;  line-height: 21px;" class="border-start ps-1">Team 4 > </span>
+                <span style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #204887; line-height: 21px;">Sprint 01/07-15/07</span>
+            </div>
+        </div>
+        <div class="right">
+            <img src="image/home.png" alt="home" height="20px">
+            <img src="image/home.png" alt="home" height="20px">
+            <img src="image/home.png" alt="home" height="20px">
+            <img src="image/home.png" alt="home" height="20px">
+            <img src="image/home.png" alt="home" height="20px">
+            <div class="avatar">
+            <img src="image/supernatural.png" class="rounded-circle" height="32px" alt="avatar">
+            <span id="tenuser" style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #204887; line-height: 100%;">Nguyễn Thị Admin</span>
+            <button (click)="logout()" type="button" class="btn btn-outline-secondary btn-sm">Log out</button>
+          </div>
+        </div>
+    </div>
+    <div class="ngoai">
+    <div class="khungduoi container-fluid border rounded-3">
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs navul">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu1"> <img src="image/home.png" alt="home" height="20px"> <span>Overview</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu2"> <img src="image/home.png" alt="home" height="20px"> <span>Backlog</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu3"> <img src="image/home.png" alt="home" height="20px"> <span>List sprints</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu4"> <img src="image/home.png" alt="home" height="20px"> <span>Sprint Planning</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#kanban"> <img src="image/home.png" alt="home" height="20px"> <span>Kanban Board</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu6"> <img src="image/home.png" alt="home" height="20px"> <span>Sprint Report</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu6"> <img src="image/home.png" alt="home" height="20px"> <span>List Module</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu6"> <img src="image/home.png" alt="home" height="20px"> <span>Sprint History</span></a>
+                        </li>
+                    </ul>
+                </div>
+        <div class="ngoaitab">
+        <div class="tab-content">
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="menu2" class=" tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ore et dolore magna aliqua.</p>
+            </div>
+            <div id="menu3" class=" tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Lorem ipsum dolor sit amet, , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="kanban" class=" tab-pane active"> <!--active khi mở web nó hiện nội dung này luôn, tab-pane hiện lên từ từ -->
+                <div class="timesearch">
+                    <span style="font-family: 'Nunito'; font-weight: 700; font-size: 16px; color: #204887;"> TIME WORKING</span>
+                    <div class="usersprint">
+                        <div class="nhapuser">
+                    <label>Search user</label>
+                    <select class="form-select" style="width: 200px;">
+                        <option >Chọn user</option>
+                        <option value="">User1</option>
+                        <option value="">user2</option>
+                        <option value="">user3</option>
+                    </select>
+                    </div>
+                    <div class="nhapuser">
+                    <label>Search sprint</label>
+                    <select class="form-select" style="width: 200px;">
+                        <option >Chọn user</option>
+                        <option value="">User1</option>
+                        <option value="">user2</option>
+                        <option value="">user3</option>
+                    </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="row" style="max-height: 520px;">
+              <div id="coltodo" class="col-sm-3 border-end">
+                <div style="padding-bottom: 10px; right: 0; left: 0; bottom: 0; top: 0;">
+                <img src="image/home.png" alt="home" height="16px">
+                <span class="todo" style="color: #3B82F6;">TO DO<span id="todototal">({{todo.length}})</span></span>
+                </div>
+                <div cdkDropList [cdkDropListData]="todo"  [cdkDropListConnectedTo]="['doing', 'done', 'test']" (cdkDropListDropped)="drop($event)" 
+                style="height: 480px; overflow-y: auto;" id="todo">
+                    <!-- xxxx -->
+                    <div cdkDrag *ngFor="let item of todo" class="alert alert-info">
+                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
+                        <ng-template #nullname>
+                            <strong>null</strong>
+                        </ng-template>
+                        <p>{{item.name}}</p>
+                    </div>
+                </div>
+              </div>
+              
+              <div id="coldoing" class="col-sm-3 border-end">
+                <div style="padding-bottom: 10px;">
+                <img src="image/home.png" alt="home" height="16px">
+                <span class="todo" style="color: #F97316;">DOING<span id="doingtotal">({{doing.length}})</span></span>
+                </div>
+                <div cdkDropList [cdkDropListData]="doing"  [cdkDropListConnectedTo]="['todo', 'done', 'test']" (cdkDropListDropped)="drop($event)" 
+                style="height: 480px; overflow-y: auto;" id="doing">
+                    <div cdkDrag *ngFor="let item of doing" class="alert-warning">
+                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
+                        <ng-template #nullname>
+                            <strong>null</strong>
+                        </ng-template>
+                        <p>{{item.name}}</p>
+                    </div>
+                </div>
+              </div>
+              <div id="coltest" class="col-sm-3 border-end">
+                <div style="padding-bottom: 10px;">
+                    <img src="image/home.png" alt="home" height="16px">
+                    <span class="todo"style="color: #696CFF;">TEST<span id="testtotal">({{test.length}})</span></span>
+                </div>
+                <div cdkDropList [cdkDropListData]="test"  [cdkDropListConnectedTo]="['doing', 'done', 'todo']" (cdkDropListDropped)="drop($event)" 
+                style="height: 480px; overflow-y: auto;" id="test">
+                <div cdkDrag *ngFor="let item of test" class="alert alert-primary">
+                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
+                        <ng-template #nullname>
+                            <strong>null</strong>
+                        </ng-template>
+                        <p>{{item.name}}</p>
+                </div>
+                </div>
+              </div>
+              <div id="coldone" class="col-sm-3">
+                <div style="padding-bottom: 10px;">
+                    <img src="image/home.png" alt="home" height="16px">
+                    <span class="todo" style="color: #1EA97C;">DONE<span id="donetotal">({{done.length}})</span></span>
+                </div>
+                <div cdkDropList [cdkDropListData]="done"  [cdkDropListConnectedTo]="['doing', 'todo', 'test']" (cdkDropListDropped)="drop($event)" 
+                style="height: 480px; overflow-y: auto;" id="done">
+                    <div cdkDrag *ngFor="let item of done" class="alert alert-primary">
+                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
+                        <ng-template #nullname>
+                            <strong>null</strong>
+                        </ng-template>
+                        <p>{{item.name}}</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+@import url('../../../public/bootstrap/css/bootstrap.min.css');
+
+#imghome{
+    background-color: #E9ECEF; 
+    padding: 4px;
+    border-radius: 5px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(153, 150, 150);
+    padding: 10px 20px;
+}
+.left{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.right{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.avatar{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.khungduoi{
+    width: 100%;
+    min-height: 655px;
+    padding: 10px 5px;
+    background-color: white;
+}
+.ngoai{
+    padding: 10px 15px;
+    background-color: #F8F9FA;
+    background-repeat: no-repeat;
+}
+nav{
+    height: 50px;
+}
+.navul li span{
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    color: #6C757D;
+}
+.nav-item{
+    width: auto;
+}
+.nav-link{
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.ngoaitab{
+    padding: 10px 15px;
+}
+.timesearch{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.usersprint{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.usersprint div label{
+    font-family: 'Nunito';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    color: #495057;
+}
+.nhapuser{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.usersprint select{
+    width: auto;
+}
+select{
+    height: 35px;
+}
+.todo{
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 17.5px;
+    line-height: 100%;
+}
+/* .navul li{
+    margin: 0 20px;
+} */
