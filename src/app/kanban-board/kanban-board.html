@@ -87,8 +87,8 @@
                     </div>
                     </div>
                 </div>
-                <div class="row" style="max-height: 520px;">
-              <div id="coltodo" class="col-sm-3 border-end">
+                <div class="formgrid grid h-auto" >
+              <div id="coltodo" class="field col-12 md:col-3">
                 <div style="padding-bottom: 10px; right: 0; left: 0; bottom: 0; top: 0;">
                 <img src="image/home.png" alt="home" height="16px">
                 <span class="todo" style="color: #3B82F6;">TO DO<span id="todototal">({{todo.length}})</span></span>
@@ -106,14 +106,14 @@
                 </div>
               </div>
               
-              <div id="coldoing" class="col-sm-3 border-end">
+              <div id="coldoing" class="field col-12 md:col-3">
                 <div style="padding-bottom: 10px;">
                 <img src="image/home.png" alt="home" height="16px">
                 <span class="todo" style="color: #F97316;">DOING<span id="doingtotal">({{doing.length}})</span></span>
                 </div>
                 <div cdkDropList [cdkDropListData]="doing"  [cdkDropListConnectedTo]="['todo', 'done', 'test']" (cdkDropListDropped)="drop($event)" 
                 style="height: 480px; overflow-y: auto;" id="doing">
-                    <div cdkDrag *ngFor="let item of doing" class="alert-warning">
+                    <div cdkDrag *ngFor="let item of doing" class="border-round-m2 p-3 bg-primary bg-yellow-500">
                         <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
                         <ng-template #nullname>
                             <strong>null</strong>
@@ -122,7 +122,7 @@
                     </div>
                 </div>
               </div>
-              <div id="coltest" class="col-sm-3 border-end">
+              <div id="coltest" class="field col-12 md:col-3">
                 <div style="padding-bottom: 10px;">
                     <img src="image/home.png" alt="home" height="16px">
                     <span class="todo"style="color: #696CFF;">TEST<span id="testtotal">({{test.length}})</span></span>
@@ -138,7 +138,7 @@
                 </div>
                 </div>
               </div>
-              <div id="coldone" class="col-sm-3">
+              <div id="coldone" class="field col-12 md:col-3">
                 <div style="padding-bottom: 10px;">
                     <img src="image/home.png" alt="home" height="16px">
                     <span class="todo" style="color: #1EA97C;">DONE<span id="donetotal">({{done.length}})</span></span>
