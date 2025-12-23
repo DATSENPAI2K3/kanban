@@ -1,0 +1,47 @@
+
+
+<!-- <p-dialog header="Thông tin chi tiết Task" [modal]="true" [(visible)]="visible" [style]="{ width: '40rem' }"> -->
+<p-dialog header={{textHead}} [modal]="true" [(visible)]="visible" [style]="{ width: '40rem' }" (onHide)="destroyTask()">
+    <div>
+        <div>
+            <div class="tthoatdong flex flex-column">
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold">Thông tin hoạt động</span>
+                    <span class="font-light text-sm text-red-500 text-base">{{ warAdd }}</span>
+                </div>
+                <div class="name">
+                    <span style="width: 173px;">Tên công việc</span>
+                    <input [(ngModel)]="data.Name" pInputText type="text" placeholder="Nhập tên công việc của bạn" />
+                </div>
+                <div class="time flex">
+                        <span style="margin-right: 59px;" class="white-space-nowrap">Time start</span>
+                        <p-datepicker [(ngModel)]="data.DateCreated" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy"/>
+                </div>
+                <div>
+                    <span style="margin-right: 10px;" class="white-space-nowrap" >Thời gian dự kiến</span>
+                    <p-datepicker [(ngModel)]="data.EstimatedTime" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy"/>
+                </div>
+                <div class="status">
+                    <span style="width: 170px;">Trạng thái</span>
+                    <p-select [(ngModel)]="data.Status" [options]="items" placeholder="Nhập trạng thái" class="w-full md:w-56" />
+                </div>
+            </div>
+            <div>
+                <p class="font-semibold">Mô tả công việc</p>
+                <textarea [(ngModel)]="data.Description" rows="5" cols="30" pTextarea fluid></textarea>
+            </div>
+        </div>
+        <div class="flex justify-content-between">
+            <div class="flex-1">
+            <p-button *ngIf="isEdit" icon="pi pi-trash" label="Xóa" severity="danger" (click)="confirmDelete()"/>
+            </div>
+            <div class="flex gap-2 justify-content-end">
+            <p-button *ngIf="isEdit" icon="pi pi-sync" label="Cập nhật" variant="outlined" severity="info" (click)="updateTask()"/>
+            <p-button *ngIf="!isEdit" (click)="addTask()" icon="pi pi-save" label="Thêm thông tin" variant="outlined" severity="success" />
+            <p-button icon="pi pi-times" (click)="destroyTask()" label="Hủy" variant="outlined" severity="danger" />
+            </div>
+        </div>
+    </div>
+</p-dialog>
+<p-confirmDialog></p-confirmDialog>
+

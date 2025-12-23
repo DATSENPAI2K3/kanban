@@ -1,82 +1,21 @@
-<div class="header">
-        <div class="left">
-            <img id="imghome" src="image/home.png" alt="home" height="32px">
-            <div>
-                <span style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #495057;  line-height: 21px;" class="border-start ps-1">Team 4 > </span>
-                <span style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #204887; line-height: 21px;">Sprint 01/07-15/07</span>
-            </div>
-        </div>
-        <div class="right">
-            <img src="image/home.png" alt="home" height="20px">
-            <img src="image/home.png" alt="home" height="20px">
-            <img src="image/home.png" alt="home" height="20px">
-            <img src="image/home.png" alt="home" height="20px">
-            <img src="image/home.png" alt="home" height="20px">
-            <div class="avatar">
-            <img src="image/supernatural.png" class="rounded-circle" height="32px" alt="avatar">
-            <span id="tenuser" style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #204887; line-height: 100%;">Nguyễn Thị Admin</span>
-            <button (click)="logout()" type="button" class="btn btn-outline-secondary btn-sm">Log out</button>
-          </div>
-        </div>
-    </div>
-    <div class="ngoai">
-    <div class="khungduoi container-fluid border rounded-3">
-                <div class="container-fluid">
-                    <ul class="nav nav-tabs navul">
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu1"> <img src="image/home.png" alt="home" height="20px"> <span>Overview</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu2"> <img src="image/home.png" alt="home" height="20px"> <span>Backlog</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu3"> <img src="image/home.png" alt="home" height="20px"> <span>List sprints</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu4"> <img src="image/home.png" alt="home" height="20px"> <span>Sprint Planning</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#kanban"> <img src="image/home.png" alt="home" height="20px"> <span>Kanban Board</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu6"> <img src="image/home.png" alt="home" height="20px"> <span>Sprint Report</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu6"> <img src="image/home.png" alt="home" height="20px"> <span>List Module</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu6"> <img src="image/home.png" alt="home" height="20px"> <span>Sprint History</span></a>
-                        </li>
-                    </ul>
-                </div>
         <div class="ngoaitab">
         <div class="tab-content">
-            <div id="menu1" class="tab-pane fade">
-                <h3>Menu 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div id="menu2" class=" tab-pane fade">
-                <h3>Menu 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ore et dolore magna aliqua.</p>
-            </div>
-            <div id="menu3" class=" tab-pane fade">
-                <h3>Menu 3</h3>
-                <p>Lorem ipsum dolor sit amet, , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
             <div id="kanban" class=" tab-pane active"> <!--active khi mở web nó hiện nội dung này luôn, tab-pane hiện lên từ từ -->
                 <div class="timesearch">
-                    <span style="font-family: 'Nunito'; font-weight: 700; font-size: 16px; color: #204887;"> TIME WORKING</span>
+                    <div><span style="font-family: 'Nunito'; font-weight: 700; font-size: 16px; color: #204887;">> TIME WORKING</span>
+                    <p-button (click)="headAdd()" class="ml-2" [style]="{'background-color': '#07a3f0', height: '2rem', width: '2rem' }" icon="pi pi-plus" (click)="showaddDialog()"></p-button>
+                    <app-task [textHead] = "textHead" (visiblechange)="visibleChange($event)" [visible]="taskVisible" class="m-2" [data]="selectedTask" [isEdit]="isEdit" (saved)="onTaskSaved()"></app-task></div>
                     <div class="usersprint">
                         <div class="nhapuser">
-                    <label>Search user</label>
-                    <select class="form-select" style="width: 200px;">
-                        <option >Chọn user</option>
-                        <option value="">User1</option>
-                        <option value="">user2</option>
-                        <option value="">user3</option>
-                    </select>
+                    <!-- <p-button (click)="before = true; applyDateFilter = true">trước ngày</p-button>
+                    <p-datepicker [(ngModel)]="filterDate" placeholder="dd/mm/yyyy"/>
+                    <p-button (click)="before = false; applyDateFilter = true">sau ngày</p-button>  -->
+                    <label>Search</label>
+                    <!-- <p-button (click)="Search()" icon="pi pi-search" label="Search" severity="info"/> -->
+                    
+                    <input [(ngModel)]="searchInput" class="mr-6" pInputText type="text" placeholder="Search tên công việc">
                     </div>
-                    <div class="nhapuser">
+                    <!-- <div class="nhapuser">
                     <label>Search sprint</label>
                     <select class="form-select" style="width: 200px;">
                         <option >Chọn user</option>
@@ -84,79 +23,58 @@
                         <option value="">user2</option>
                         <option value="">user3</option>
                     </select>
-                    </div>
-                    </div>
-                </div>
-                <div class="formgrid grid h-auto" >
-              <div id="coltodo" class="field col-12 md:col-3">
-                <div style="padding-bottom: 10px; right: 0; left: 0; bottom: 0; top: 0;">
-                <img src="image/home.png" alt="home" height="16px">
-                <span class="todo" style="color: #3B82F6;">TO DO<span id="todototal">({{todo.length}})</span></span>
-                </div>
-                <div cdkDropList [cdkDropListData]="todo"  [cdkDropListConnectedTo]="['doing', 'done', 'test']" (cdkDropListDropped)="drop($event)" 
-                style="height: 480px; overflow-y: auto;" id="todo">
-                    <!-- xxxx -->
-                    <div cdkDrag *ngFor="let item of todo" class="alert alert-info">
-                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
-                        <ng-template #nullname>
-                            <strong>null</strong>
-                        </ng-template>
-                        <p>{{item.name}}</p>
+                    </div> -->
                     </div>
                 </div>
-              </div>
+                
+                <div class="grid h-auto" >
+                <app-columns-contains-task 
+                (dataChange)="opentask($event)"
+                [arr]="filterTasks('todo')"
+                bgColor ="bg-cyan-100"
+                name = "TO DO"
+                borderRight="border-right-1"
+                tcolor="text-cyan-400"
+                idcol="todo"
+                [cdkDropListData] = "data.todo"
+                [cdkDropListConnectedTo]="['doing','test','done']">
+                </app-columns-contains-task>
               
-              <div id="coldoing" class="field col-12 md:col-3">
-                <div style="padding-bottom: 10px;">
-                <img src="image/home.png" alt="home" height="16px">
-                <span class="todo" style="color: #F97316;">DOING<span id="doingtotal">({{doing.length}})</span></span>
-                </div>
-                <div cdkDropList [cdkDropListData]="doing"  [cdkDropListConnectedTo]="['todo', 'done', 'test']" (cdkDropListDropped)="drop($event)" 
-                style="height: 480px; overflow-y: auto;" id="doing">
-                    <div cdkDrag *ngFor="let item of doing" class="border-round-m2 p-3 bg-primary bg-yellow-500">
-                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
-                        <ng-template #nullname>
-                            <strong>null</strong>
-                        </ng-template>
-                        <p>{{item.name}}</p>
-                    </div>
-                </div>
-              </div>
-              <div id="coltest" class="field col-12 md:col-3">
-                <div style="padding-bottom: 10px;">
-                    <img src="image/home.png" alt="home" height="16px">
-                    <span class="todo"style="color: #696CFF;">TEST<span id="testtotal">({{test.length}})</span></span>
-                </div>
-                <div cdkDropList [cdkDropListData]="test"  [cdkDropListConnectedTo]="['doing', 'done', 'todo']" (cdkDropListDropped)="drop($event)" 
-                style="height: 480px; overflow-y: auto;" id="test">
-                <div cdkDrag *ngFor="let item of test" class="alert alert-primary">
-                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
-                        <ng-template #nullname>
-                            <strong>null</strong>
-                        </ng-template>
-                        <p>{{item.name}}</p>
-                </div>
-                </div>
-              </div>
-              <div id="coldone" class="field col-12 md:col-3">
-                <div style="padding-bottom: 10px;">
-                    <img src="image/home.png" alt="home" height="16px">
-                    <span class="todo" style="color: #1EA97C;">DONE<span id="donetotal">({{done.length}})</span></span>
-                </div>
-                <div cdkDropList [cdkDropListData]="done"  [cdkDropListConnectedTo]="['doing', 'todo', 'test']" (cdkDropListDropped)="drop($event)" 
-                style="height: 480px; overflow-y: auto;" id="done">
-                    <div cdkDrag *ngFor="let item of done" class="alert alert-primary">
-                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
-                        <ng-template #nullname>
-                            <strong>null</strong>
-                        </ng-template>
-                        <p>{{item.name}}</p>
-                    </div>
-                </div>
-              </div>
+                <app-columns-contains-task 
+                (dataChange)="opentask($event)"
+                [arr]="filterTasks('doing')"
+                bgColor ="bg-yellow-100"
+                name = "DOING"
+                borderRight="border-right-1"
+                tcolor="text-yellow-400"
+                idcol="doing"
+                [cdkDropListData] = "data.doing"
+                [cdkDropListConnectedTo]="['todo','test','done']">
+                </app-columns-contains-task>
+              
+                <app-columns-contains-task 
+                (dataChange)="opentask($event)"
+                [arr]="filterTasks('test')"
+                bgColor ="bg-indigo-100"
+                name = "TEST"
+                borderRight="border-right-1"
+                tcolor="text-indigo-400"
+                idcol="test"
+                [cdkDropListData] = "data.test"
+                [cdkDropListConnectedTo]="['doing','todo','done']">
+                </app-columns-contains-task>
+              
+                <app-columns-contains-task 
+                (dataChange)="opentask($event)"
+                [arr]="filterTasks('done')"
+                bgColor ="bg-teal-100"
+                name = "DONE"
+                tcolor="text-teal-400"
+                idcol="done"
+                [cdkDropListData] = "data.done"
+                [cdkDropListConnectedTo]="['doing','test','todo']">
+                </app-columns-contains-task>
             </div>
             </div>
         </div>
         </div>
-    </div>
-</div>

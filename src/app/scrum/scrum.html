@@ -1,0 +1,103 @@
+<div class="header">
+        <div class="left">
+            <img id="imghome" src="image/home.png" alt="home" height="32px">
+            <div>
+                <span style="font-family: 'Nunito'" class="font-semibold text-lg text-700">Team 4 > </span>
+                <span style="font-family: 'Nunito'" class="font-semibold text-lg text-blue-800">Sprint 01/07-15/07</span>
+            </div>
+        </div>
+        <div class="right">
+            <i class="pi pi-bell" style="font-size: 1.3rem"></i>
+            <i class="pi pi-address-book" style="font-size: 1.3rem"></i>
+            <i class="pi pi-user" style="font-size: 1.3rem"></i>
+            <i class="pi pi-users" style="font-size: 1.3rem"></i>
+            <i class="pi pi-cog" style="font-size: 1.3rem"></i>
+            <div class="avatar">
+            <img src="image/supernatural.png" class="border-circle" height="32px" alt="avatar">
+            <span id="tenuser" style="font-family: 'Nunito'; font-weight: 600; font-size: 17.5px; color: #204887; line-height: 100%;">Nguyễn Thị Admin</span>
+            <button (click)="logout()" type="button" class="border-1 border-bluegray-50 px-2 py-2 border-round cursor-pointer hover:surface-400 hover:border-bluegray-100">Log out</button>
+        </div>
+        </div>
+    </div>
+    <div class="ngoai">
+    <div class="khungduoi h-100 container-fluid border-round-xl border-1 border-200">
+                <p-tabs value="0">
+    <p-tablist>
+        <p-tab value="0">Overview</p-tab>
+        <p-tab value="1">Backlog</p-tab>
+        <p-tab value="2">List sprints</p-tab>
+        <p-tab value="3">Sprint Planning</p-tab>
+        <p-tab value="4">Kanban Board</p-tab>
+        <p-tab value="5">Sprint Report</p-tab>
+        <p-tab value="6">List Module</p-tab>
+        <p-tab value="7">Sprint History</p-tab>
+    </p-tablist>
+        <p-tabpanel value="0">
+            <p class="m-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                anim id est laborum.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+            <p class="m-0">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius
+                modi.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+            <p class="m-0">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+                sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
+                facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                impedit quo minus.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="3">
+            <p class="m-0">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+                sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
+                facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                impedit quo minus.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="4">
+            <app-kanban-board></app-kanban-board>
+        </p-tabpanel>
+        <p-tabpanel value="5">
+            <p class="m-0">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+                sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
+                facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                impedit quo minus.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="6">
+            <p class="m-0">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+                sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
+                facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                impedit quo minus.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="7">
+            <p class="m-0">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+                sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
+                facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                impedit quo minus.
+            </p>
+        </p-tabpanel>
+</p-tabs>
+    </div>
+</div>

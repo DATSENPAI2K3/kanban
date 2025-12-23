@@ -1,0 +1,10 @@
+.tthoatdong input{
+    width: 100%;
+}
+.tthoatdong > div{
+    display: flex;
+    align-items: center;
+}
+.tthoatdong{
+    gap: 8px;
+}

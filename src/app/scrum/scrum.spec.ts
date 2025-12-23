@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Doingcol } from './doingcol';
+import { Scrum } from './scrum';
 
-describe('Doingcol', () => {
-  let component: Doingcol;
-  let fixture: ComponentFixture<Doingcol>;
+describe('Scrum', () => {
+  let component: Scrum;
+  let fixture: ComponentFixture<Scrum>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Doingcol]
+      imports: [Scrum]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Doingcol);
+    fixture = TestBed.createComponent(Scrum);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

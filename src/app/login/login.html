@@ -18,10 +18,12 @@
                     <div>
                 <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Tên đăng nhập</b></label><br></div>
                 <input id="username" [(ngModel)]="username" type="text" placeholder="Nhập tên đăng nhập của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warningun}}</div>
                 </div>
                 <div>
                 <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Mật khẩu</b></label><br></div>
                 <input id="password" [(ngModel)]="password" type="password" placeholder="Nhập mật khẩu của bạn" style=" font-family: 'Nunito';"><br>
+                <div class="font-light text-sm text-red-500 p-0 m-0">{{warningpw}}</div>
                 </div>
             </div>
                 <div class="matkhau">

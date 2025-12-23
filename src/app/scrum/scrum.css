@@ -95,9 +95,6 @@ select{
     font-size: 17.5px;
     line-height: 100%;
 }
-:host{
-    display: contents;
-}
 /* .navul li{
     margin: 0 20px;
 } */

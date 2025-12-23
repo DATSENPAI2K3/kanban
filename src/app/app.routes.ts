@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { Login } from './login/login';
 import { Signup } from './signup/signup';
 import { KanbanBoard } from './kanban-board/kanban-board';
+import { Overview } from './Overview/overview/overview';
+import { Scrum } from './scrum/scrum';
 
 export const routes: Routes = [
     {
@@ -13,7 +15,11 @@ export const routes: Routes = [
         component: Signup
     },
     {
-        path: 'kanbanboard',
-        component: KanbanBoard
+        path: 'scrum',
+        component: Scrum
+    },
+    {
+        path: 'overview',
+        component: Overview
     }
 ];

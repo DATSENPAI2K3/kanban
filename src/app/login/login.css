@@ -9,7 +9,7 @@
     left: 0;
     right: 0;
     position: absolute;
-    background: linear-gradient(#2B3BA600 0%, #07146D00 0%, #07146D78 47%), url('../../../public/image/59854b8123dc3771f7e8e5eb3bbc7f4a.png') no-repeat center/cover;
+    background: linear-gradient(#2B3BA600 0%, #07146D00 0%, #07146D78 47%), url('/image/59854b8123dc3771f7e8e5eb3bbc7f4a.png') no-repeat center/cover;
 }
 .background::before {
     content: "";
@@ -51,6 +51,7 @@
     flex-direction: column;
     backdrop-filter: blur(12px);
     border-image-slice: 1;
+    box-sizing:content-box;
 }
 .dangnhap a{
     display: inline;

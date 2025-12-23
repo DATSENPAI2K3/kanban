@@ -46,6 +46,7 @@
     flex-direction: column;
     backdrop-filter: blur(12px);
     border-image-slice: 1;
+    box-sizing: content-box;
 }
 .dangnhap a{
     display: inline;

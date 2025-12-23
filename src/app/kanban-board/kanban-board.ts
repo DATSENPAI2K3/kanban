@@ -1,140 +1,178 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Col } from './col/col';
+import { TabsModule } from 'primeng/tabs';
+import { Task } from './task/task';
+import { Dialog } from 'primeng/dialog';
+import { Button } from 'primeng/button';
+import { InputText } from 'primeng/inputtext';
+import { FormsModule } from "@angular/forms";
+import { DatePickerModule } from 'primeng/datepicker';
+
+
+
+// 1️⃣ TYPE TRƯỚC
+type TaskModel = {
+  Id?: string;
+  Name: string;
+  EstimatedTime: any;
+  DateCreated: any;
+  Status: any;
+  Description: any;
+};
+
+type ColumnKey = 'todo' | 'doing' | 'test' | 'done';
+
+type KanbanData = {
+  todo: TaskModel[];
+  doing: TaskModel[];
+  test: TaskModel[];
+  done: TaskModel[];
+};
 
 @Component({
   selector: 'app-kanban-board',
-  imports:[DragDropModule,CommonModule],
+  imports: [Button, DragDropModule, CommonModule, Col, TabsModule, Task, InputText, FormsModule, DatePickerModule],
   templateUrl: './kanban-board.html',
   styleUrl: './kanban-board.css',
   encapsulation: ViewEncapsulation.None,
 })
-
 export class KanbanBoard {
-  constructor(private router: Router){}
-  logout(){
+@Input() searchInput : string = "";
+  taskVisible = false;
+
+  data: KanbanData = {
+    todo: [],
+    doing: [],
+    test: [],
+    done: []
+  };
+
+  emptyTask(): TaskModel {
+    return {
+      Name: '',
+      EstimatedTime: null,
+      DateCreated: null,
+      Status: '',
+      Description: ''
+    };
+  }
+
+  selectedTask: TaskModel = this.emptyTask();
+
+  isEdit = false;
+
+  constructor(private router: Router) {
+    this.getdata();
+  }
+  textHead : string = "";
+  headAdd(){
+    this.textHead = "Thêm Task";
+  }
+  visibleChange(visible: boolean) {
+    this.taskVisible = visible;
+  }
+
+  // Search(){
+    
+  // }
+
+  // filterDate: Date | null = null;
+  // before = false;
+  // applyDateFilter = false;
+  
+  // filterByDate(tasks: TaskModel[]): TaskModel[] {
+  //   if (!this.applyDateFilter) return tasks;
+  //   if (!this.filterDate) return tasks;
+
+  //   const target = new Date(this.filterDate).setHours(0,0,0,0);
+
+  //   const result: TaskModel[] = [];
+
+  //   for (let i = 0; i < tasks.length; i++) {
+  //     if (!tasks[i].EstimatedTime) continue;
+
+  //     const taskDate = new Date(tasks[i].EstimatedTime).setHours(0,0,0,0);
+
+  //     if (this.before) {
+  //       if (taskDate <= target) result.push(tasks[i]);
+  //     } else {
+  //       if (taskDate >= target) result.push(tasks[i]);
+  //     }
+  //   }
+
+  //   return result;
+  // }
+
+
+  filterTasks(col: ColumnKey): TaskModel[] {
+    let tasks = this.data[col];
+    console.log("abc")
+    if (this.searchInput.trim()) {
+      const keyword = this.searchInput.toLowerCase();
+      const result: TaskModel[] = [];
+      for (let i = 0; i < tasks.length; i++) {
+        const nameLower = tasks[i].Name.toLowerCase();
+        if (
+          nameLower.includes(keyword)
+        ) {
+          result.push(tasks[i]);
+        }
+      }
+      tasks = result.sort((a:TaskModel, b:TaskModel) => a.Name.localeCompare(b.Name));
+      // tasks = result;
+    }
+    // tasks = this.filterByDate(tasks);
+    return tasks;
+  }
+
+
+  opentask(id: string) {
+    this.textHead = "Thông tin chi tiết Task";
+    const task = this.findTaskById(id);
+    if (!task) return;
+
+    this.selectedTask = { ...task,
+      DateCreated: task.DateCreated ? new Date(task.DateCreated) : null,
+      EstimatedTime: task.EstimatedTime ? new Date(task.EstimatedTime) : null
+    };
+    this.isEdit = true;
+    this.taskVisible = true;
+  }
+
+  findTaskById(id: string): TaskModel | null {
+    const columns: ColumnKey[] = ['todo', 'doing', 'test', 'done'];
+
+    for (const col of columns) {
+      const found = this.data[col].find(t => t.Id === id);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  showaddDialog() {
+    this.selectedTask = this.emptyTask();
+    this.isEdit = false;
+    this.taskVisible = true;
+  }
+
+  getdata() {
+    const raw = localStorage.getItem('kanban');
+    if (raw) {
+      this.data = JSON.parse(raw);
+    }
+  }
+
+  onTaskSaved() {
+    this.getdata();
+  }
+
+  logout() {
+    localStorage.setItem('token', '');
     this.router.navigate(['/login']);
   }
-  ngOnInit(){
-    this.kanban();
-  }
-  todo: any[] = [];
-  doing: any[] = [];
-  test: any[] = [];
-  done: any[] = [];
-  kanbandata: any[] = [];
-  async kanban(){
-    try {
-          let response = await fetch("http://192.168.18.87:8066/api/KanBanBroad/KanbanBoard?sprintId=10121",{
-              method: "GET",
-              headers:{
-                  "Content-Type": "application/json",
-              }
-          });
-          let data = await response.json();
-          console.log(data);
-          // let table1 = '';
-          // let table2 = '';
-          // let table3 = '';
-          // let table4 = '';
-        //   if(response.ok) return;
-          if(data.data.length === 0) return alert("khong co du lieu");
-          this.kanbandata = data.data;
-          this.todo  = this.kanbandata.find(x => x.status === 1)?.tasks || [];
-          this.doing = this.kanbandata.find(x => x.status === 2)?.tasks || [];
-          this.test  = this.kanbandata.find(x => x.status === 3)?.tasks || [];
-          this.done  = this.kanbandata.find(x => x.status === 4)?.tasks || [];
-        //   if(response.ok){
-        //       if(data.data.length === 0) return alert("khong co du lieu");
-        //       for(let j = 0; j < data.data.length; j++){
-                
-        //           if(data.data[j].status == 1){
-        //               for (let i = 0; i < data.data[j].tasks.length; i++){
-        //           table1 += `<div class="alert alert-info" id = "${data.data[j].tasks[i].id}" draggable="true" ondragstart="dragstartHandler(event)"><strong>${data.data[j].tasks[i].assigneeName}</strong> 
-        //               <p>${data.data[j].tasks[i].name}</p></div>`;
-        //               }
-        //               document.getElementById("todo")!.innerHTML = table1;
-        //           }
-                  
-        //           if(data.data[j].status == 2){
-        //               for (let i = 0; i < data.data[j].tasks.length; i++){
-        //           table2 += `<div class="alert alert-warning" id = "${data.data[j].tasks[i].id}"  draggable="true" ondragstart="dragstartHandler(event)"><strong>${data.data[j].tasks[i].assigneeName}</strong> 
-        //               <p>${data.data[j].tasks[i].name}</p></div>`;
-        //               }
-        //               document.getElementById("doing")!.innerHTML = table2;
-        //           }
-                  
-        //           if(data.data[j].status == 3){
-        //               for (let i = 0; i < data.data[j].tasks.length; i++){
-        //           table3 += `<div class="alert alert-primary" id = "${data.data[j].tasks[i].id}"  draggable="true" ondragstart="dragstartHandler(event)"><strong>${data.data[j].tasks[i].assigneeName}</strong> 
-        //               <p>${data.data[j].tasks[i].name}</p></div>`;
-        //               }
-        //               document.getElementById("test")!.innerHTML = table3;
-        //           }
-                  
-        //           if(data.data[j].status == 4){
-        //               for (let i = 0; i < data.data[j].tasks.length; i++){
-        //           table4 += `<div class="alert alert-primary" id = "${data.data[j].tasks[i].id}"  draggable="true" ondragstart="dragstartHandler(event)"><strong>${data.data[j].tasks[i].assigneeName}</strong> 
-        //               <p>${data.data[j].tasks[i].name}</p></div>`;
-        //               }
-        //               document.getElementById("done")!.innerHTML = table4;
-        //           }
-                  
-        //       }
-        //       this.dem();
-        //   }else{
-        //       alert("ket noi that bai");
-        //   }
-      } catch (error) {
-          alert("loi ket noi" + error);
-      }
-  }
-  dem(){
-      let divtodo = document.getElementById("todo")!;
-      document.getElementById("todototal")!.innerHTML = `<span>(${divtodo.children.length})</span>`;
-
-      let divdoing = document.getElementById("doing")!;
-      document.getElementById("doingtotal")!.innerHTML = `<span>(${divdoing.children.length})</span>`;
-
-      let divtest = document.getElementById("test")!;
-      document.getElementById("testtotal")!.innerHTML = `<span>(${divtest.children.length})</span>`;
-
-      let divdone = document.getElementById("done")!;
-      document.getElementById("donetotal")!.innerHTML = `<span>(${divdone.children.length})</span>`;
-  }
-  drop(event: CdkDragDrop<string[]>) {
-  if (event.previousContainer === event.container) {
-    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  } else {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-}
-//   drop(event: CdkDragDrop<any[]>) {
-
-//     // cùng 1 cột -> rearrange
-//     if (event.previousContainer === event.container) {
-//       moveItemInArray(
-//         event.container.data,
-//         event.previousIndex,
-//         event.currentIndex
-//       );
-//     } 
-//     // khác cột -> chuyển task
-//     else {
-//       transferArrayItem(
-//         event.previousContainer.data,
-//         event.container.data,
-//         event.previousIndex,
-//         event.currentIndex
-//       );
-//     }
-//   }
 }

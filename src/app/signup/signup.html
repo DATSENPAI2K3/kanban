@@ -1,7 +1,7 @@
 <div class="background"><div class="logo"><img src="image/logo.png" alt="logo"></div>
     <div class="frame">
         <img src="image/Frame.png" alt="frame" height="500"  style="position: fixed;">
-        <div class="dangnhap">
+        <div class="dangnhap h-auto">
             <div class = "cai">
             <div class="xinchao">
                 <div><h2 style="padding: 0; margin: 0; text-align: center; font-family: 'Nunito';color: white; font-size: 22px;">Đăng ký</h2></div>
@@ -13,24 +13,30 @@
                                 <div class="ten_khau">
                     <div class ="inputmkdn">
                     <div>
-                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Email</b></label><br></div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Email<span class="text-red-400"> *</span></b></label><br></div>
                 <input id="email" [(ngModel)]="email" type="text" placeholder="Nhập email của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warningemail}}</div>
                 </div>
                 <div>
-                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Tên đăng nhập</b></label><br></div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Tên đăng nhập<span class="text-red-400"> *</span></b></label><br></div>
                 <input id="username" [(ngModel)]="username" type="text" placeholder="Nhập tên đăng nhập của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warningusername}}</div>
                 </div>
                 <div>
-                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Họ & tên</b></label><br></div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Họ & tên<span class="text-red-400"> *</span></b></label><br></div>
                 <input id="fullname" [(ngModel)]="fullname" type="text" placeholder="Nhập họ tên của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warningfullname}}</div>
                 </div>
                 <div>
-                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Mật khẩu</b></label><br></div>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Mật khẩu<span class="text-red-400"> *</span></b></label><br></div>
                 <input id="password" type="password" [(ngModel)]="password" placeholder="Nhập mật khẩu của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warningpassword}}</div>
                 </div>
                 <div>
-                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Xác nhận mật khẩu</b></label><br></div>
-                <input id="xacnhan" type="password" placeholder="Nhập lại mật khẩu của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="margin-bottom: 5px;"><label style="color: white; font-size: 14px;"><b>Xác nhận mật khẩu<span class="text-red-400"> *</span></b></label><br></div>
+                <input id="xacnhan" type="password" [(ngModel)]="checkpassword" placeholder="Nhập lại mật khẩu của bạn" style=" font-family: 'Nunito';"><br>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warningcheckpassword}}</div>
+                <div style="position:absolute" class="font-light text-sm text-red-500 p-0 m-0">{{warning}}</div>
                 </div>
             </div>
                 
@@ -47,3 +53,4 @@
         </div>
     </div>
     <div class = "icon"><img src="image/icon.png" width="200px"></div></div>
+    

@@ -1,0 +1,12 @@
+.menu{
+    margin: 0px 15px;
+}
+.menu > div{
+    padding: 17.5px;
+}
+div > div:hover{
+    border-radius: 10px;
+}
+.menu > div:focus{
+    border-bottom: 1px solid rgb(49, 222, 210);
+}

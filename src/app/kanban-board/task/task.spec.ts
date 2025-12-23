@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Donecol } from './donecol';
+import { Task } from './task';
 
-describe('Donecol', () => {
-  let component: Donecol;
-  let fixture: ComponentFixture<Donecol>;
+describe('Task', () => {
+  let component: Task;
+  let fixture: ComponentFixture<Task>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Donecol]
+      imports: [Task]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Donecol);
+    fixture = TestBed.createComponent(Task);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

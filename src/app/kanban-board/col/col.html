@@ -1,1 +1,29 @@
-<p>col works!</p>
+<!-- <div style="height: 480px; overflow-y: auto;" id="doing">
+                    <div cdkDrag *ngFor="let item of arr" class="border-round p-3 mb-3 {{bgColor}}">
+                        <strong *ngIf="item.assigneeName; else nullname">{{item.assigneeName}}</strong>
+                        <ng-template #nullname>
+                            <strong>null</strong>
+                        </ng-template>
+                        <p>{{item.name}}</p>
+                    </div>
+                </div> -->
+<div class="{{borderRight}} border-200 col-12 md:col-3" 
+    cdkDropList
+    [cdkDropListData]="arr"
+    [cdkDropListConnectedTo]="cdkDropListConnectedTo"
+    (cdkDropListDropped)="drop($event)"
+    id = {{idcol}}>
+    <div style="padding-bottom: 10px;" class="flex gap-1">
+        <img src="image/home.png" alt="home" height="16px">
+        <span class = "todo {{tcolor}}">{{name}}<span>({{arr.length}})</span></span>
+    </div>
+    <div style="height: 460px; overflow-y: auto;">
+    <div (click)="opentask(item.Id)" cdkDrag *ngFor="let item of arr" class="border-round p-3 mb-3 {{bgColor}}">
+            <h3><strong *ngIf="item.Name; else nullname">{{item.Name}}</strong></h3>
+            <ng-template #nullname>
+                <strong>null</strong>
+            </ng-template>
+            <p>{{item.Description}}</p>
+    </div>
+    </div>
+</div>
